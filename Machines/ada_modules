@@ -1,0 +1,20 @@
+#!/bin/bash -l
+
+echo "Loading modules for CESM_postprocessing tool..."
+
+module purge
+ml NCL/6.6.2-foss-2018b
+ml NCO/4.7.9-foss-2018b
+ml netCDF/4.6.1-foss-2018b-cdf5
+#ml python/2.7.13-generic
+ml Python/2.7.15-foss-2018b
+#ml Anaconda3/5.2.0
+ml Miniconda2/4.3.21
+
+#source /ihesp/user/agopal/CESM_postprocessing/cesm-env2/bin/activate
+#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/site-packages:$PYTHONPATH
+#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH
+#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/cesm-env2/lib/python2.7/site-packages/PyNIO:$PYTHONPATH
+#export PYNIOPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/site-packages/PyNIO
+
+

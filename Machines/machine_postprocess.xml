@@ -308,5 +308,64 @@
     </components>
   </machine>
 
+ <machine name="ada" hostname="login">
+    <timeseries_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</timeseries_pes>
+    <xconform_pes  queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</xconform_pes>
+    <mpi_command>mpirun</mpi_command>
+    <pythonpath></pythonpath>
+    <f2py fcompiler="gfortran" f77exec="/sw/eb/software/GCCcore/7.3.0/bin/gfortran">f2py</f2py>
+    <za>
+      <compiler>gfortran</compiler>
+      <flags>-c -g -O2</flags>
+      <include>-I/sw/eb/software/netCDF/4.6.1-foss-2018b-cdf5/include -I/sw/eb/software/netCDF-Fortran/4.4.4-foss-2018b/include</include>
+      <libs>-L/sw/eb/software/netCDF-Fortran/4.4.4-foss-2018b/lib -lnetcdff -L/sw/eb/software/GCCcore/7.3.0/lib64 -L/sw/eb/software/GCCcore/7.3.0/lib -L/sw/eb/software/OpenBLAS/0.3.1-GCC-7.3.0-2.30/lib -L/sw/eb/software/ScaLAPACK/2.0.2-gompi-2018b-OpenBLAS-0.3.1/lib -L/sw/eb/software/FFTW/3.3.8-gompi-2018b/lib -L/sw/eb/software/netCDF/4.6.1-foss-2018b/lib64 -lnetcdf -lnetcdf -lm -lpthread</libs>
+    </za>
+    <reset_modules>
+      <module>module purge</module>
+    </reset_modules>
+    <modules>
+      <module>ml NCL/6.6.2-foss-2018b</module>
+      <module>ml NCO/4.7.9-foss-2018b</module>
+      <module>ml netCDF/4.6.1-foss-2018b-cdf5</module>
+      <module>ml Python/2.7.15-foss-2018b</module>
+<!--      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages:$PYTHONPATH</module>
+      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH</module>
+      <module>export PYNIOPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages/PyNIO</module>-->
+    </modules>
+    <components>
+      <component name="atm">
+	<averages_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</averages_pes>
+	<diagnostics_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<regrid_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</regrid_pes>
+	<obs_root>/glade/p/cesm/amwg/amwg_data</obs_root> <!-- TODO: update this and other obs_roots -->
+      </component>
+      <component name="ice">
+	<averages_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</averages_pes>
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<obs_root>/glade/p/cesm/pcwg/ice/data</obs_root>
+      </component>
+      <component name="lnd">
+	<averages_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</averages_pes>
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<regrid_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="02:00:00" memory="18000">3</regrid_pes>
+	<obs_root>/glade/p/cesm/lmwg/diag/lnd_diag_data</obs_root>
+      </component>
+      <component name="ocn">
+	<averages_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</averages_pes>
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<obs_root>/scratch/user/altuntas/obsroot</obs_root> <!-- TODO: move to a permanent dir -->
+      </component>
+      <component name="ilamb">
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<initialize_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="06:00:10" memory="18000">3</initialize_pes>
+	<obs_root>/glade/p/cesm/lmwg_dev/oleson/ILAMB/ILAMB_all</obs_root>
+      </component>
+      <component name="iomb">
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<initialize_pes queue="mn_small"  nodes="2" pes_per_node="1" wallclock="00:00:10" memory="18000">3</initialize_pes>
+	<obs_root>/glade/p/cesm/omwg/obs_data/IOMB</obs_root>
+      </component>
+    </components>
+  </machine>
 </machine_postprocess>
 

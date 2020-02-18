@@ -137,19 +137,15 @@ fi
 #----------------------------------------------------------------------
 env="${pp_dir}/cesm-env2"
 echo $env
-if [ ! -d $env ]; then
-    status="ERROR"
-    info="$progname - ${pp_dir}/cesm-env2 virtual environment does not exist.
-Check the $module_script for the correct ncar_pylib virtualenv clone command.
-If a new or updated virtual environment needs to be created then follow these steps:
-
->cd ${pp_dir}
->make clobber
->make clobber-env
-
-and rerun this script."
-    print_result $status "$info"
-    exit 0
+#if [ ! -d $env ]; then
+if [ -d $env ]; then
+    #status="ERROR"
+    info="$progname - ${pp_dir}/cesm-env2 virtual environment already exists. Skipping conda create"
+    print_result "$info"
+else
+   export CONDA_ENVS_PATH=${pp_dir}
+   export CONDA_PKGS_DIRS=/ihesp/user/agopal/conda/pkgs
+   conda create python=2.7 -n cesm-env2
 fi
 
 #----------------------------------------------------------------------
@@ -167,6 +163,9 @@ cd $pp_dir
 echo "$progname - activating virtual environment in ${pp_dir}/cesm-env2."
 . cesm-env2/bin/activate
 
+export PATH=${pp_dir}/cesm-env2/bin:$PATH
+
+cesm-env2/bin/pip install -r env_reqs.txt 
 #----------------------------------------------------------------------
 # install post processing packages
 #----------------------------------------------------------------------
@@ -229,7 +228,7 @@ ln -sf $pp_dir/ocn_diag/tool_lib/zon_avg/za $pp_dir/ocn_diag/tool_lib/za
 #----------------------------------------------------------------------
 # cleanup and deactivate the virtualenv. 
 #----------------------------------------------------------------------
-deactivate
+source deactivate
 
 cd $curdir
 
