@@ -311,6 +311,7 @@
  <machine name="ada" hostname="login">
     <timeseries_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</timeseries_pes>
     <xconform_pes  queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</xconform_pes>
+    <ocn_remap_pes  queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</ocn_remap_pes>
     <mpi_command>mpirun</mpi_command>
     <pythonpath></pythonpath>
     <f2py fcompiler="gfortran" f77exec="/sw/eb/software/GCCcore/7.3.0/bin/gfortran">f2py</f2py>
