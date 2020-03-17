@@ -144,8 +144,9 @@ if [ -d $env ]; then
     print_result "$info"
 else
    export CONDA_ENVS_PATH=${pp_dir}
-   export CONDA_PKGS_DIRS=/ihesp/user/agopal/conda/pkgs
+   export CONDA_PKGS_DIRS=${pp_dir}/conda_pkgs
    conda create python=2.7 -n cesm-env2
+   #python -m venv ./cesm-env2
 fi
 
 #----------------------------------------------------------------------
@@ -166,6 +167,8 @@ echo "$progname - activating virtual environment in ${pp_dir}/cesm-env2."
 export PATH=${pp_dir}/cesm-env2/bin:$PATH
 
 cesm-env2/bin/pip install -r env_reqs.txt 
+
+cp Templates/activate_this.py ${pp_dir}/cesm-env2/bin/
 #----------------------------------------------------------------------
 # install post processing packages
 #----------------------------------------------------------------------
@@ -224,6 +227,32 @@ fi
 
 # link the za compiled code to one level up for the NCL
 ln -sf $pp_dir/ocn_diag/tool_lib/zon_avg/za $pp_dir/ocn_diag/tool_lib/za
+
+
+cd $pp_dir/src
+export FC=gfortran F77=gfortran CC=gcc
+export PYTHONPATH=$pp_dir/cesm-env2/lib/python2.7/site-packages
+export PYNIOPATH=$pp_dir/cesm-env2/lib/python2.7/site-packages/PyNIO
+export HAS_NETCDF4=1
+export NETCDF4_PREFIX="/sw/eb/software/netCDF/4.6.1-foss-2018b-cdf5/"
+export HAS_HDF5=1
+export HDF5_PREFIX="/sw/eb/software/HDF5/1.10.2-foss-2018b/"
+export F2CLIBS=gfortran
+export F2CLIBS_PREFIX="/software/easybuild/software/GCCcore/6.3.0/bin/gfortran"
+
+
+rm -rf pynio ASAPPyTools 
+git clone https://github.com/NCAR/pynio.git
+cd pynio
+git checkout 1.5.3
+sed -i '/extra_objects = EXTRA_OBJECTS,/d' setup.py
+FC=gfortran F77=gfortran CC=gcc  $pp_dir/cesm-env2/bin/python setup.py install
+
+cd $pp_dir/src
+git clone https://github.com/NCAR/ASAPPyTools.git
+cd ASAPPyTools
+$pp_dir/cesm-env2/bin/python setup.py install
+
 
 #----------------------------------------------------------------------
 # cleanup and deactivate the virtualenv. 
