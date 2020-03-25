@@ -27,9 +27,45 @@ ml  Miniconda2/4.3.21
 export POSTPROCESS_PATH=<path to your CESM_Postprocessing root>
 source activate $POSTPROCESS_PATH/cesm-env2
 ```
+## 4. Create your postprocessing instance
+```
+create_postprocess -case [your-case-directory]
+```
+
+## Ocean Diagnostics:  
+(Steps from Alper Altuntas)
+## Step:1 - Edit env_postprocess.xml and env_diags_ocn.xml configuration files
+*see the files in the following directory as an example:*
+
+    /scratch/user/altuntas/g.e20.G.TL319_t13.control.001_contd
+
+## Step:2 - Generate average files
+### Step:2.1:
+*Enter your project id in ocn_averages file by replacing "None" in the following line with your project id:*
+
+    #BSUB -P None
+
+**Note:** depending on the duration of the simulation, you may also need to increase the wallclock time.
+
+### Step:2.2 - Submit the job:
+
+    bsub < ocn_averages
+
+### Step:2.3
+Check the latest log file to see if averaging was completed successfully: [your-case-directory]/logs/
+
+## Step:3 - Generate the diagnostics
+### Step:3.1:
+*Enter your project id in ocn_diagnostics file by replacing "None" in the following line with your project id:*
+
+    #BSUB -P None
+
+### Step:3.2 - Submit the job:
+
+    bsub < ocn_diagnostics
 
 
-
+-------------------------------------
 Project repository for the CESM python based post-processing code, documentation via the wiki, and issues tracking.
 
 The input data sets required by this code are separate from this repository. Instructions
