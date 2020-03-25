@@ -33,37 +33,28 @@ create_postprocess -case [your-case-directory]
 ```
 
 ## Ocean Diagnostics:  
-(Steps from Alper Altuntas)
-## Step:1 - Edit env_postprocess.xml and env_diags_ocn.xml configuration files
+(Steps from Alper Altuntas https://github.com/alperaltuntas/CESM_postprocessing/wiki/CESM-Postprocessing-on-ADA)
+## 1. Edit env_postprocess.xml and env_diags_ocn.xml configuration files
 *see the files in the following directory as an example:*
 
     /scratch/user/altuntas/g.e20.G.TL319_t13.control.001_contd
-
-## Step:2 - Generate average files
-### Step:2.1:
+## 2. Configure job scripts
 *Enter your project id in ocn_averages file by replacing "None" in the following line with your project id:*
 
     #BSUB -P None
 
 **Note:** depending on the duration of the simulation, you may also need to increase the wallclock time.
 
-### Step:2.2 - Submit the job:
-
+## 3. Generate average files
+```
     bsub < ocn_averages
-
-### Step:2.3
+```
 Check the latest log file to see if averaging was completed successfully: [your-case-directory]/logs/
 
-## Step:3 - Generate the diagnostics
-### Step:3.1:
-*Enter your project id in ocn_diagnostics file by replacing "None" in the following line with your project id:*
-
-    #BSUB -P None
-
-### Step:3.2 - Submit the job:
-
+## 4. Generate the diagnostics
+```
     bsub < ocn_diagnostics
-
+```
 
 -------------------------------------
 Project repository for the CESM python based post-processing code, documentation via the wiki, and issues tracking.
