@@ -28,10 +28,11 @@ pp_dav_path=`./pp_config --get POSTPROCESS_PATH_DAV --value`
 
 ## activate the virtualenv that contains all the non-bootstrapped dependencies
 
-cd {{ virtualEnvDir }}
-echo "Running from virtualenv directory:"
-pwd
-. activate
+#cd {{ virtualEnvDir }}
+#echo "Running from virtualenv directory:"
+#pwd
+#. activate
+
 
 ## load the boot-strap modules 
 
@@ -39,6 +40,8 @@ pwd
 {{ module }}
 {% endfor %}
 
+
+source activate {{ virtualEnvRoot }}
 
 {% if pythonpath|length > 0 %}
 ## The PYTHONPATH setting here is for libraries that are not available via modules.

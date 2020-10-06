@@ -145,8 +145,8 @@ if [ -d $env ]; then
 else
    export CONDA_ENVS_PATH=${pp_dir}
    export CONDA_PKGS_DIRS=${pp_dir}/conda_pkgs
-   #conda create python=2.7 -n cesm-env2
-   virtualenv --system-site-packages -p python2 cesm-env2
+   conda create python=2.7 -n cesm-env2
+   #virtualenv --system-site-packages -p python2 cesm-env2
 fi
 
 #----------------------------------------------------------------------
@@ -166,15 +166,14 @@ echo "$progname - activating virtual environment in ${pp_dir}/cesm-env2."
 source activate ${pp_dir}/cesm-env2
 export PATH=${pp_dir}/cesm-env2/bin:$PATH
 
-pip install numpy==1.16.5
-pip install mpi4py==2.0
-#conda install -c conda-forge scipy==1.1.0
+conda  install -c conda-forge numpy==1.16.5 mpi4py==2.0 cftime
+conda install -c conda-forge scipy==1.1.0
 #conda install -c conda-forge pandas==0.23.1
 #conda install -c conda-forge netCDF4==1.5.3
 #conda install -c conda-forge mpi4py==2.0.0
 #conda install -c conda-forge matplotlib
 #conda install -c conda-forge Jinja2==2.7.3
-#conda install -c conda-forge sympy
+conda install -c conda-forge matplotlib sympy Jinja2 markupsafe
 #cesm-env2/bin/pip install -r env_reqs.txt 
 
 cp Templates/activate_this.py ${pp_dir}/cesm-env2/bin/

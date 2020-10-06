@@ -63,6 +63,7 @@ except KeyError:
 
 cesm_pp_path = os.environ["POSTPROCESS_PATH"]
 
+print ('Using PP Environment at {0}'.format(cesm_pp_path))
 #
 # activate the virtual environment that was created by create_python_env
 #
@@ -464,12 +465,13 @@ def create_batch(ppDir, pes, batchTmpl, runTmpl, postProcessCmd, mpiCmd, outFile
         raise OSError(err_msg)
 
     virtualEnvDir = '{0}/cesm-env2/bin'.format(ppDir)
+    virtualEnvRoot = '{0}/cesm-env2'.format(ppDir)
     # check that the postProcessCmd exists in the virtualenv
     rc, err_msg = cesmEnvLib.checkFile('{0}/{1}'.format(virtualEnvDir, postProcessCmd), 'read')
     if not rc:
         raise OSError(err_msg)
 
-    debug = '--debug 0'
+    debug = '--debug 2'
     if options.debug:
         debug = '--debug {0}'.format(options.debug[0])
 
@@ -511,6 +513,7 @@ def create_batch(ppDir, pes, batchTmpl, runTmpl, postProcessCmd, mpiCmd, outFile
                      'postProcessCmd' : postProcessCmd,
                      'caseRoot' : caseRoot,
                      'virtualEnvDir' : virtualEnvDir,
+                     'virtualEnvRoot' : virtualEnvRoot,
                      'debug' : debug,
                      'backtrace' : backtrace,
                      'standalone' : standalone,
@@ -644,7 +647,7 @@ def main(options):
 
     # initialize the environment dictionary
     envDict = initialize_main(envDict, options, standalone)
-    envDict['PP_CASE_PATH'] = pp_case_path
+    envDict['PP_CASE_PATH'] = os.path.abspath(pp_case_path)
 
     # get the machine name from the hostname
     hostname = cesmEnvLib.get_hostname()

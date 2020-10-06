@@ -5,7 +5,7 @@
 ## 0. Load all necessary modules
 ```
 module purge
-ml Anaconda/2-5.0.1
+ml Miniconda2/4.3.21
 ml NCL/6.6.2-foss-2018b
 ml NCO/4.7.9-foss-2018b
 ml netCDF/4.6.1-foss-2018b-cdf5
@@ -14,6 +14,7 @@ ml netCDF/4.6.1-foss-2018b-cdf5
 ```
 git clone https://github.com/abishekg7/CESM_postprocessing.git
 cd CESM_postprocessing
+export POSTPROCESS_PATH=`pwd`
 ```
 
 ## 2. Install virtual environment:
@@ -23,8 +24,7 @@ cd CESM_postprocessing
 ## 3. Activate virtual environment:
 ```
 ml purge 
-ml Anaconda/2-5.0.1
-export POSTPROCESS_PATH=<path to your CESM_Postprocessing root>
+ml Miniconda2/4.3.21
 source activate $POSTPROCESS_PATH/cesm-env2
 ```
 ## 4. Create your postprocessing instance
