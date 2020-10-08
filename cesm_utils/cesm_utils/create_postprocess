@@ -590,7 +590,7 @@ def initialize_main(envDict, options, standalone):
     # refer to the caseroot that was specified on the command line instead of what
     # is read in the environment as the caseroot may have changed from what is listed
     # in the env xml
-    envDict['CASEROOT'] = caseroot
+    envDict['CASEROOT'] = os.path.abspath(caseroot)
     envDict['POSTPROCESS_PATH'] = pp
 
     envDict['CESM_TAG'] = 'undefined'

@@ -170,8 +170,8 @@
 
       <entry id="TIMESERIES_OUTPUT_ROOTDIR" 
 	     type="string"
-	     valid_values="/glade/scratch/$USER/archive/$CASE, $DOUT_S_ROOT"  
-	     value="$DOUT_S_ROOT" 
+	     valid_values="/glade/scratch/$USER/archive/$CASE, $DOUT_S_ROOT, $PP_CASE_PATH/tseries"  
+	     value="$PP_CASE_PATH/tseries" 
 	     group="postprocess"
 	     desc="Fully-qualified rootdir path to output variable time series data files. Note: [compname]/proc/tseries/[tper] will be appended automatically."
 	     ></entry> 

@@ -55,7 +55,7 @@
       <entry id="ATMDIAG_OUTPUT_ROOT_PATH"
              type="char"
              valid_values=""
-             value="$DOUT_S_ROOT/atm/proc"
+             value="$PP_CASE_PATH/proc/atm"
              group="global"
              desc="Postprocessed files output root path."
              ></entry>
