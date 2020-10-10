@@ -75,13 +75,14 @@ class OceanDiagnosticPlot(object):
         psFiles = list()
         psFiles = sorted(files)
 
+
         # check if the convert command exists
         rc = cesmEnvLib.which('convert')
         if rc is not None and imgFormat.lower() in ['png','gif']:
             for psFile in psFiles:
 
                 sourceFile = '{0}/{1}.ps'.format(workdir, psFile)
-##                print('...... convert source file {0}'.format(sourceFile))
+                print('...... convert source file {0}'.format(sourceFile))
                 # check if the sourceFile exists
                 rc, err_msg = cesmEnvLib.checkFile(sourceFile,'read')
 
@@ -94,13 +95,15 @@ class OceanDiagnosticPlot(object):
 
                     # convert the image from ps to imgFormat
                     try:
+                        print('before subprocess')
                         pipe = subprocess.check_call( ['convert', '-trim', '-bordercolor', 'white', '-border', '5x5', '-density', '95', '{0}'.format(sourceFile),'{0}'.format(imgFile)])
-##                   print('...... created {0} size = {1}'.format(imgFile, os.path.getsize(imgFile)))
+                        print('...... created {0} size = {1}'.format(imgFile, os.path.getsize(imgFile)))
                     except subprocess.CalledProcessError as e:
                         print('...... failed to create {0}'.format(imgFile))
                         print('WARNING: convert_plots call to convert failed with error:')
                         print('    {0}'.format(e.output))
                 else:
+                    print('continuing')
                     continue
         else:
             print('WARNING: convert_plots unable to find convert command in path.')

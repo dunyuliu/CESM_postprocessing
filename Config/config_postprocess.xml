@@ -30,7 +30,7 @@
       <entry id="CASE"
 	     type="string"
 	     valid_values=""  
-	     value="inherit"
+	     value="b.e13.B1950C5.ne30_g16.ihesp24_1950cntl.002"
 	     group="case_info"
 	     desc="case name"
 	     ></entry> 
@@ -54,7 +54,7 @@
       <entry id="DOUT_S_ROOT"
 	     type="string"
 	     valid_values=""  
-	     value="inherit"
+	     value="/scratch/training/CESM_post/datasets/b.e13.B1950C5.ne30_g16.ihesp24_1950cntl.002"
 	     group="case_info"
 	     desc="Fully qualified path to the location of the short term archive output, DOUT_S_ROOT, on local disk where case history files reside. Assumes the adherence to the CESM file naming conventions."
 	     ></entry> 
@@ -62,7 +62,7 @@
       <entry id="ATM_GRID"
 	     type="string"
 	     valid_values="0.9x1.25"  
-	     value="inherit"
+	     value="ne30"
 	     group="case_info"
 	     desc="Atmosphere model grid"
 	     ></entry> 
@@ -70,7 +70,7 @@
       <entry id="ICE_GRID"
 	     type="string"
 	     valid_values="gx1v6" 
-	     value="inherit"
+	     value="gx1v6"
 	     group="case_info"
 	     desc="Sea-Ice model grid"
 	     ></entry> 
@@ -78,7 +78,7 @@
       <entry id="ICE_NX"
 	     type="string"
 	     valid_values="320"  
-	     value="inherit"
+	     value="320"
 	     group="case_info"
 	     desc="Sea-Ice model grid NX - default 320 for 1-degree ocean grid"
 	     ></entry> 
@@ -86,7 +86,7 @@
       <entry id="ICE_NY"
 	     type="string"
 	     valid_values="384"
-	     value="inherit"
+	     value="384"
 	     group="case_info"
 	     desc="Sea-Ice model grid NY - default 384 for 1-degree ocean grid"
 	     ></entry> 
@@ -94,7 +94,7 @@
       <entry id="LND_GRID"
 	     type="string"
 	     valid_values="0.9x1.25"
-	     value="inherit"
+	     value="ne30"
 	     group="case_info"
 	     desc="Land model grid"
 	     ></entry> 
@@ -102,7 +102,7 @@
       <entry id="OCN_GRID"
 	     type="string"
 	     valid_values="gx1v6"   
-	     value="inherit"
+	     value="gx1v6"
 	     group="case_info"
 	     desc="Ocean model grid"
 	     ></entry> 
@@ -110,7 +110,7 @@
       <entry id="CESM_TAG"
 	     type="string"
 	     valid_values="cesm2_0"  
-	     value="inherit"
+	     value="ihesp24"
 	     group="case_info"
 	     desc="CESM tag used to create this case"
 	     ></entry> 

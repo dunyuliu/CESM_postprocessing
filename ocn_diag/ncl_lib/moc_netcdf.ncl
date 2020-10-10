@@ -17,7 +17,7 @@ begin
   depth = depth / 1.0e5	; in km
   moc_components = tostring(fileid->moc_components)
 
-  transport_components = tostring(fileid->transport_components)
+  ;transport_components = tostring(fileid->transport_components)
   transport_regions = tostring(fileid->transport_regions)
   MOC = fileid->MOC
   MOC&$MOC!3$ = depth

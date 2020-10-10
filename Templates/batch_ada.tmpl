@@ -9,7 +9,6 @@
 #BSUB -R "span[ptile={{ ppn }}]"
 #BSUB -J {{ processName }}
 #BSUB -W {{ wallclock }}
-#BSUB -P {{ project }} 
 #BSUB -L /bin/bash           #Uses the bash login shell to initialize the job's execution environment.
 #BSUB -R "rusage[mem={{memory}}]"  #Request 25000MB per process (CPU) for the job
 

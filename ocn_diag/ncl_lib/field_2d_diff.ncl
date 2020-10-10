@@ -4,13 +4,16 @@ load "$NCLPATH/get_environment_diff.ncl"
 load "$NCLPATH/contour_plot.ncl"
 
 begin
-  field_name  = [/"SSH", "HMXL", "HBLT"/]
+  field_name  = [/"SSH", "HMXL"/]
 
   missing = 1.0e30
 
   fileid_1 = addfile(file_netcdf,"r")
   fileid_2 = addfile(cntrl_netcdf,"r")
 
+  if (isfilevar(fileid_1,"HBLT")) then
+    ListPush(field_name,"HBLT")
+  end if
   if (isfilevar(fileid_1,"DIA_DEPTH")) then
     ListPush(field_name,"DIA_DEPTH")
   end if

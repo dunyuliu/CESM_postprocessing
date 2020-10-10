@@ -20,10 +20,15 @@ begin
   region_index = (/ global, atlantic, pacific, indian, southern /)
   n_reg = dimsizes(region_index)
 
-  field_name = [/ "SSH", "HBLT", "HMXL" /] 
+  field_name = [/ "SSH","HMXL" /] 
 
   fileid_1 = addfile(file_netcdf_za,"r")
   fileid_2 = addfile(cntrl_netcdf_za,"r")
+
+
+  if (isfilevar(fileid_1,"HBLT")) then
+    ListPush(field_name,"HBLT")
+  end if
   if (isfilevar(fileid_1,"DIA_DEPTH")) then
     ListPush(field_name,"DIA_DEPTH")
   end if

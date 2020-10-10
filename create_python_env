@@ -143,8 +143,10 @@ if [ -d $env ]; then
     info="$progname - ${pp_dir}/cesm-env2 virtual environment already exists. Skipping conda create"
     print_result "$info"
 else
-   export CONDA_ENVS_PATH=${pp_dir}
-   export CONDA_PKGS_DIRS=${pp_dir}/conda_pkgs
+   #export CONDA_ENVS_PATH=${pp_dir}
+   export CONDA_ENVS_PATH=${env}
+   #export CONDA_PKGS_DIRS=${pp_dir}/conda_pkgs
+   export CONDA_PKGS_DIRS=${env}/conda_pkgs
    conda create python=2.7 -n cesm-env2
    #virtualenv --system-site-packages -p python2 cesm-env2
 fi

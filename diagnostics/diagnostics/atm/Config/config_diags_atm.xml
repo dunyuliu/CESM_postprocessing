@@ -228,7 +228,7 @@
       <entry id="ATMDIAG_test_first_yr"
              type="integer"
              valid_values=""
-             value=""
+             value="36"
              group="date_params"
              desc="Start year for test case for diagnostics."
              ></entry>
@@ -236,7 +236,7 @@
       <entry id="ATMDIAG_test_nyrs"
              type="integer"
              valid_values=""
-             value=""
+             value="9"
              group="date_params"
              desc="The number of years of test data to be used for the diagnostics."
              ></entry>
