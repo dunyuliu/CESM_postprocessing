@@ -5,10 +5,10 @@
 ## 0. Load all necessary modules
 ```
 module purge
-ml Miniconda2/4.3.21
 ml NCL/6.6.2-foss-2018b
 ml NCO/4.7.9-foss-2018b
 ml netCDF/4.6.1-foss-2018b-cdf5
+ml Python/2.7.15-foss-2018b
 ```
 ## 1. Clone CESM_postprocessing
 ```
@@ -25,6 +25,7 @@ export POSTPROCESS_PATH=`pwd`
 ```
 ml purge 
 ml Miniconda2/4.3.21
+ml Python/2.7.15-foss-2018b
 source activate $POSTPROCESS_PATH/cesm-env2
 ```
 ## 4. Create your postprocessing instance
