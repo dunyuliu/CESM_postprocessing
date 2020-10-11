@@ -471,7 +471,7 @@ def create_batch(ppDir, pes, batchTmpl, runTmpl, postProcessCmd, mpiCmd, outFile
     if not rc:
         raise OSError(err_msg)
 
-    debug = '--debug 2'
+    debug = '--debug 0'
     if options.debug:
         debug = '--debug {0}'.format(options.debug[0])
 

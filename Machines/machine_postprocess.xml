@@ -325,11 +325,10 @@
       <module>module purge</module>
     </reset_modules>
     <modules>
-      <module>ml Miniconda2/4.3.21</module>	    
       <module>ml NCL/6.6.2-foss-2018b</module>
       <module>ml NCO/4.7.9-foss-2018b</module>
       <module>ml netCDF/4.6.1-foss-2018b-cdf5</module>
-      <!--<module>ml Python/2.7.15-foss-2018b</module>-->
+      <module>ml Python/2.7.15-foss-2018b</module>
 <!--      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages:$PYTHONPATH</module>
       <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH</module>
       <module>export PYNIOPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages/PyNIO</module>-->
