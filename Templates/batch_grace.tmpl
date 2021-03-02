@@ -1,0 +1,15 @@
+#! /bin/bash -l
+
+#SBATCH -n {{ pes }}
+#SBATCH -N {{ nodes }}
+#SBATCH --ntasks-per-node={{ ppn }}
+#SBATCH -t {{ wallclock }}
+#SBATCH -p medium
+#SBATCH -J {{ processName }}
+#SBATCH -A {{ project }}
+#SBATCH --mem {{ memory }}
+#SBATCH -m block
+#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-type=fail         # send email if job fails
+#SBATCH --mail-user=agopal@tamu.edu
+

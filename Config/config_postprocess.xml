@@ -62,7 +62,7 @@
       <entry id="ATM_GRID"
 	     type="string"
 	     valid_values="0.9x1.25"  
-	     value="ne30"
+	     value="ne120np4"
 	     group="case_info"
 	     desc="Atmosphere model grid"
 	     ></entry> 
@@ -70,7 +70,7 @@
       <entry id="ICE_GRID"
 	     type="string"
 	     valid_values="gx1v6" 
-	     value="gx1v6"
+	     value="tx0.1v2"
 	     group="case_info"
 	     desc="Sea-Ice model grid"
 	     ></entry> 
@@ -78,7 +78,7 @@
       <entry id="ICE_NX"
 	     type="string"
 	     valid_values="320"  
-	     value="320"
+	     value="3600"
 	     group="case_info"
 	     desc="Sea-Ice model grid NX - default 320 for 1-degree ocean grid"
 	     ></entry> 
@@ -86,7 +86,7 @@
       <entry id="ICE_NY"
 	     type="string"
 	     valid_values="384"
-	     value="384"
+	     value="2400"
 	     group="case_info"
 	     desc="Sea-Ice model grid NY - default 384 for 1-degree ocean grid"
 	     ></entry> 
@@ -94,7 +94,7 @@
       <entry id="LND_GRID"
 	     type="string"
 	     valid_values="0.9x1.25"
-	     value="ne30"
+	     value="ne120np4"
 	     group="case_info"
 	     desc="Land model grid"
 	     ></entry> 
@@ -102,7 +102,7 @@
       <entry id="OCN_GRID"
 	     type="string"
 	     valid_values="gx1v6"   
-	     value="gx1v6"
+	     value="tx0.1v2"
 	     group="case_info"
 	     desc="Ocean model grid"
 	     ></entry> 

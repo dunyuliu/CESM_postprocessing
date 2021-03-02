@@ -1,0 +1,27 @@
+#!/bin/bash -l
+
+echo "Loading modules for CESM_postprocessing tool..."
+
+module purge
+ml intel/2019b
+ml ANTLR
+ml HDF5
+#ml NCL/6.6.2
+#ml NCO/4.7.9
+#ml netCDF/4.6.1
+ml Python/2.7.16
+
+export NCARG_ROOT=/scratch/group/ihesp/software/share/ncl-6.6.2
+export NCO_PATH=/scratch/group/ihesp/software/share/nco-4.9.4/nco-4.9.7
+export NETCDF4_PATH=/scratch/group/ihesp/software/share/netcdf-c-4.7.4/install2019b_2
+export LD_LIBRARY_PATH=$NCARG_ROOT/lib:$NCO_PATH/lib:$NETCDF4_PATH/lib:$LD_LIBRARY_PATH
+export PATH=$NCARG_ROOT/bin:$NCO_PATH/bin:$NETCDF4_PATH/bin:$PATH
+
+
+#source /ihesp/user/agopal/CESM_postprocessing/cesm-env2/bin/activate
+#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/site-packages:$PYTHONPATH
+#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH
+#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/cesm-env2/lib/python2.7/site-packages/PyNIO:$PYTHONPATH
+#export PYNIOPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/site-packages/PyNIO
+
+

@@ -117,7 +117,7 @@ def commandline_options():
                         help='show exception backtraces as extra debugging output')
 
     parser.add_argument('-debug', '--debug', nargs=1, required=False, type=int, default=0,
-                        help='debugging verbosity level output: 0 = none, 1 = minimum, 2 = maximum. 0 is default')
+                        help='debugging verbosity level output: 0 = none, 1 = minimum, 2 = maximum. 2 is default')
 
     parser.add_argument('-caseroot', '--caseroot', nargs=1, required=True, 
                         help='fully quailfied path to case root directory (required)')
@@ -130,6 +130,9 @@ def commandline_options():
 
     parser.add_argument('-username', '--username', nargs=1, required=False,
                         help='User name (optional). Defaults to user login name.')
+
+    parser.add_argument('-machine', '--machine', nargs=1, required=False,
+                        help='Machine name (optional). Defaults to grace')
 
     parser.add_argument('-add-dav', '--add-dav', dest='add_dav', nargs=1, required=False,
                         help='Fully qualified path to the root of the CESM postprocessing ' \
@@ -471,7 +474,7 @@ def create_batch(ppDir, pes, batchTmpl, runTmpl, postProcessCmd, mpiCmd, outFile
     if not rc:
         raise OSError(err_msg)
 
-    debug = '--debug 0'
+    debug = '--debug 2'
     if options.debug:
         debug = '--debug {0}'.format(options.debug[0])
 
@@ -598,6 +601,11 @@ def initialize_main(envDict, options, standalone):
         envDict['CESM_TAG'] = options.cesmtag[0]
 
     # set the project code
+    envDict['MACH_TMP'] = os.getenv('MACH')
+    if options.machine:
+        envDict['MACH_TMP'] = options.machine[0]
+
+    # set the project code
     envDict['PROJECT'] = os.getenv('PROJECT')
     if options.project:
         envDict['PROJECT'] = options.project[0]
@@ -650,7 +658,9 @@ def main(options):
     envDict['PP_CASE_PATH'] = os.path.abspath(pp_case_path)
 
     # get the machine name from the hostname
-    hostname = cesmEnvLib.get_hostname()
+    #hostname = cesmEnvLib.get_hostname()
+    hostname = envDict['MACH_TMP']
+    print hostname
     envDict['MACH'] = cesmEnvLib.get_machine_name(hostname, '{0}/Machines/machine_postprocess.xml'.format(envDict['POSTPROCESS_PATH']))
 
     # check for undefined machine
