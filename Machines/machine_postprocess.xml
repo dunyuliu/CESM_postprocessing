@@ -2,78 +2,6 @@
 
 <machine_postprocess>
 
-  <machine name="grace" hostname="grace">
-    <timeseries_pes queue="long"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</timeseries_pes>
-    <xconform_pes  queue="long" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</xconform_pes>
-    <ocn_remap_pes  queue="long" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</ocn_remap_pes>
-    <mpi_command>mpirun</mpi_command>
-    <pythonpath></pythonpath>
-    <f2py fcompiler="gfortran" f77exec="/sw/eb/sw/GCCcore/8.3.0/bin/gfortran">f2py</f2py>
-    <za>
-      <compiler>gfortran</compiler>
-      <flags>-c -g -O2</flags>
-      <include>-I/scratch/group/ihesp/software/share/netcdf-c-4.7.4/install2019b_2/include -I/scratch/group/ihesp/software/share/netcdf-fortran-4.5.3/install2019b_2/include</include>
-      <libs>-L/scratch/group/ihesp/software/share/netcdf-c-4.7.4/install2019b_2/lib -L/scratch/group/ihesp/software/share/netcdf-fortran-4.5.3/install2019b_2/lib -lnetcdff -L/sw/eb/sw/GCCcore/8.3.0/lib64 -L/sw/eb/sw/GCCcore/8.3.0/lib -L/sw/eb/sw/OpenBLAS/0.3.7-GCC-8.3.0/lib -L/sw/eb/sw/ScaLAPACK/2.0.2-gompi-2019b/lib64 -L/sw/eb/sw/FFTW/3.3.8-intel-2019b/lib -lnetcdf -lm -lpthread</libs>
-    </za>
-    <reset_modules>
-      <module>module purge</module>
-    </reset_modules>
-    <modules>
-      <module>module load intel/2019b</module>
-      <module>module load ANTLR</module>
-      <module>module load HDF5</module>
-      <module>module load GSL/2.6</module>
-      <module>module load Python/2.7.16</module>
-      <module>export NCARG_ROOT=/scratch/group/ihesp/software/share/ncl-6.6.2</module>
-      <module>export NCO_PATH=/scratch/group/ihesp/software/share/nco-4.9.4/nco-4.9.7/install</module>
-      <module>export NETCDF4_PATH=/scratch/group/ihesp/software/share/netcdf-c-4.7.4/install2019b_2</module>
-      <module>export LD_LIBRARY_PATH=$NCARG_ROOT/lib:$NCO_PATH/lib:$NETCDF4_PATH/lib:$LD_LIBRARY_PATH</module>
-      <module>export PATH=$NCARG_ROOT/bin:$NCO_PATH/bin:$NETCDF4_PATH/bin:$PATH</module>
-      <module>export PYTHONPATH=/scratch/group/iheso/software/CESM_postprocessing/cesm-env2/lib/python2.7/site-packages/PyNIO:$PYTHONPATH</module>
-<!--      <module>ml NCL/6.6.2-foss-2018b</module>
-                <module>ml NCO/4.7.9-foss-2018b</module>
-      <module>ml netCDF/4.6.1-foss-2018b-cdf5</module>
-      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages:$PYTHONPATH</module>
-      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH</module>
-      <module>export PYNIOPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages/PyNIO</module>-->
-    </modules>
-    <components>
-      <component name="atm">
-      	<averages_pes queue="long" nodes="1" pes_per_node="12" wallclock="20:00:00" memory="360000">12</averages_pes>
-      	<diagnostics_pes queue="long" nodes="1" pes_per_node="12" wallclock="20:00:00" memory="360000">12</diagnostics_pes>
-      	<regrid_pes queue="long" nodes="1" pes_per_node="12" wallclock="20:00:00" memory="360000">12</regrid_pes>
-      	<obs_root>/scratch/group/ihesp/obs_root/amwg/amwg_data</obs_root> 
-      </component>
-      <component name="ice">
-      	<averages_pes queue="long"  nodes="1" pes_per_node="12" wallclock="20:00:00" memory="360000">12</averages_pes>
-      	<diagnostics_pes queue="long"  nodes="1" pes_per_node="12" wallclock="20:00:00" memory="360000">12</diagnostics_pes>
-      	<obs_root>/scratch/group/ihesp/obs_root/pcwg/ice/data</obs_root>
-      </component>
-      <component name="lnd">
-      	<averages_pes queue="long"  nodes="1" pes_per_node="12" wallclock="20:00:00" memory="18000">12</averages_pes>
-      	<diagnostics_pes queue="long"  nodes="1" pes_per_node="12" wallclock="20:00:00" memory="18000">12</diagnostics_pes>
-      	<regrid_pes queue="long" nodes="1" pes_per_node="12" wallclock="20:00:00" memory="18000">12</regrid_pes>
-      	<obs_root>/scratch/group/ihesp/obs_root/lnd_diag_data</obs_root>
-      </component>
-      <component name="ocn">
-      	<averages_pes queue="long"  nodes="1" pes_per_node="12" wallclock="20:00:00" memory="360000">12</averages_pes>
-      	<diagnostics_pes queue="long"  nodes="1" pes_per_node="10" wallclock="25:00:00" memory="360000">10</diagnostics_pes>
-      	<obs_root>/scratch/group/ihesp/obs_root</obs_root>
-      </component>
-      <component name="ilamb">
-	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
-	<initialize_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="06:00:10" memory="18000">3</initialize_pes>
-	<obs_root>/glade/p/cesm/lmwg_dev/oleson/ILAMB/ILAMB_all</obs_root>
-      </component>
-      <component name="iomb">
-	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
-	<initialize_pes queue="mn_small"  nodes="2" pes_per_node="1" wallclock="00:00:10" memory="18000">3</initialize_pes>
-	<obs_root>/glade/p/cesm/omwg/obs_data/IOMB</obs_root>
-      </component>
-    </components>
-  </machine>
-
-
   <machine name="dav" hostname="dav,geyser,caldera,pronghorn,casper">
     <timeseries_pes  nodes="4" pes_per_node="16" wallclock="04:00:00" memory="100G">64</timeseries_pes>
     <xconform_pes  nodes="4" pes_per_node="16" wallclock="06:00:00" memory="100G">64</xconform_pes>
@@ -411,6 +339,71 @@
 	<diagnostics_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="2000">3</diagnostics_pes>
 	<regrid_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</regrid_pes>
 	<obs_root>/scratch/training/CESM_post/obs_root/amwg/amwg_data</obs_root> <!-- TODO: update this and other obs_roots -->
+      </component>
+      <component name="ice">
+	<averages_pes queue="mn_small"  nodes="1" pes_per_node="4" wallclock="1:00" memory="2000">4</averages_pes>
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="4" wallclock="1:00" memory="2000">4</diagnostics_pes>
+	<obs_root>/scratch/training/CESM_post/obs_root/pcwg/ice/data</obs_root>
+      </component>
+      <component name="lnd">
+	<averages_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</averages_pes>
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<regrid_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="02:00:00" memory="18000">3</regrid_pes>
+	<obs_root>/glade/p/cesm/lmwg/diag/lnd_diag_data</obs_root>
+      </component>
+      <component name="ocn">
+	<averages_pes queue="mn_small"  nodes="1" pes_per_node="4" wallclock="1:00" memory="2000">4</averages_pes>
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="4" wallclock="1:00" memory="2000">4</diagnostics_pes>
+	<obs_root>/scratch/training/CESM_post/obs_root</obs_root> <!-- TODO: move to a permanent dir -->
+      </component>
+      <component name="ilamb">
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<initialize_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="06:00:10" memory="18000">3</initialize_pes>
+	<obs_root>/glade/p/cesm/lmwg_dev/oleson/ILAMB/ILAMB_all</obs_root>
+      </component>
+      <component name="iomb">
+	<diagnostics_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</diagnostics_pes>
+	<initialize_pes queue="mn_small"  nodes="2" pes_per_node="1" wallclock="00:00:10" memory="18000">3</initialize_pes>
+	<obs_root>/glade/p/cesm/omwg/obs_data/IOMB</obs_root>
+      </component>
+    </components>
+  </machine>
+  
+  
+   <machine name="ls5" hostname="login">
+    <timeseries_pes queue="mn_small"  nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</timeseries_pes>
+    <xconform_pes  queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</xconform_pes>
+    <ocn_remap_pes  queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</ocn_remap_pes>
+    <mpi_command>mpirun</mpi_command>
+    <pythonpath></pythonpath>
+    <za>
+      <compiler>ifort</compiler>
+      <flags>-c -g -O2</flags>
+      <include> -I/opt/cray/pe/netcdf/4.6.1.3/INTEL/16.0/include </include>
+      <libs> -L/opt/cray/pe/netcdf/4.6.1.3/INTEL/16.0/lib -lnetcdff -lnetcdf</libs>
+    </za>
+    <!--reset_modules>
+      <module>module purge</module>
+    </reset_modules-->	
+    <modules>
+		<module>ml unload xalt</module>
+		<module>ml intel/18.0.2</module>
+		<module>ml python2</module>
+		<module>ml ncl_ncarg</module>
+		<module>ml nco</module>
+		<module>ml hdf5</module>
+		<module>ml netcdf</module>
+		<module>ml udunits</module>
+<!--      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages:$PYTHONPATH</module>
+      <module>export PYTHONPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH</module>
+      <module>export PYNIOPATH=/ihesp/altuntas/CESM_postprocessing_cdf5/pynio/site-packages/PyNIO</module>-->
+    </modules>
+    <components>
+      <component name="atm">
+	<averages_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="2000">3</averages_pes>
+	<diagnostics_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="2000">3</diagnostics_pes>
+	<regrid_pes queue="mn_small" nodes="1" pes_per_node="3" wallclock="6:00" memory="18000">3</regrid_pes>
+	<obs_root>/work/07931/dunyuliu/group_share/postprocessing/amwg_diag_20140804</obs_root> <!-- TODO: update this and other obs_roots -->
       </component>
       <component name="ice">
 	<averages_pes queue="mn_small"  nodes="1" pes_per_node="4" wallclock="1:00" memory="2000">4</averages_pes>
