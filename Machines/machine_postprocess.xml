@@ -386,8 +386,8 @@
       <module>module purge</module>
     </reset_modules>	
     <modules>
-		<module>ml impi-largemem/18.0.2</module>
 		<module>ml intel/18.0.2</module>
+		<module>ml impi-largemem/18.0.2</module>
 		<module>ml python2</module>
 		<module>ml ncl_ncarg</module>
 		<module>ml nco</module>
