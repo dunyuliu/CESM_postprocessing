@@ -382,11 +382,11 @@
       <include> -I/opt/cray/pe/netcdf/4.6.1.3/INTEL/16.0/include </include>
       <libs> -L/opt/cray/pe/netcdf/4.6.1.3/INTEL/16.0/lib -lnetcdff -lnetcdf</libs>
     </za>
-    <!--reset_modules>
+    <reset_modules>
       <module>module purge</module>
-    </reset_modules-->	
+    </reset_modules>	
     <modules>
-		<module>ml unload xalt</module>
+		<module>ml impi-largemem/18.0.2</module>
 		<module>ml intel/18.0.2</module>
 		<module>ml python2</module>
 		<module>ml ncl_ncarg</module>
