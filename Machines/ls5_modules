@@ -1,13 +1,10 @@
 #!/bin/bash -l
 
-echo "Loading modules for CESM_postprocessing tool..."
+echo "Loading modules for CESM_postprocessing tool ..."
+echo "Exporting pathes for HDF5 ..."
 
-#module purge
-#ml Anaconda/2-5.0.1
-#ml Miniconda2/4.3.21
 ml unload xalt
 ml intel/18.0.2
-#ml gcc/7.3.0
 ml python2
 ml ncl_ncarg
 ml nco
@@ -15,12 +12,7 @@ ml hdf5
 ml netcdf
 ml udunits 
 
-#source /ihesp/user/agopal/CESM_postprocessing/cesm-env2/bin/activate
-#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/site-packages:$PYTHONPATH
-#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/build/lib.linux-x86_64-2.7/PyNIO:$PYTHONPATH
-#export PYTHONPATH=/ihesp/user/agopal/CESM_postprocessing/cesm-env2/lib/python2.7/site-packages/PyNIO:$PYTHONPATH
-#export PYNIOPATH=/ihesp/user/agopal/CESM_postprocessing/pynio/site-packages/PyNIO
+ml
 
-
-
-
+export LIBRARY_PATH=$TACC_NETCDF_LIB:$TACC_HDF5_LIB:$LIBRARY_PATH
+export C_INCLUDE_PATH=$TACC_NETCDF_INC:$TACC_HDF5_INC
