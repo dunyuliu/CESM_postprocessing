@@ -258,6 +258,20 @@ git clone https://github.com/NCAR/ASAPPyTools.git
 cd ASAPPyTools
 $pp_dir/cesm-env2/bin/python setup.py install
 
+
+export PYTHONPATH=/scratch/07931/dunyuliu/CESM_postprocessing/cesm-env2/lib/python2.7/site-packages/
+
+pip install h5py
+pip uninstall h5py
+wget https://github.com/h5py/h5py/releases/download/3.2.1/h5py-3.2.1.tar.gz
+tar -xf h5py-3.2.1.tar.gz && cd h5py-3.2.1
+HDF5_DIR=$TACC_HDF5_DIR pip install --no-binary=h5py h5py
+
+pip uninstall netCDF4
+HDF5_DIR=$TACC_HDF5_DIR pip install --no-binary=netCDF4 netCDF4
+pip install --no-binary=pathlib pathlib
+
+
 #----------------------------------------------------------------------
 # cleanup and deactivate the virtualenv. 
 #----------------------------------------------------------------------
