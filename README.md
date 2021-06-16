@@ -1,11 +1,11 @@
 # Modified on 06/15/2021 by Dunyu Liu (dliu@ig.utexas.edu)
-# CESM_postprocessing tool installation on Frontera at TACC.
-# 1. Add frontera_modules
-# 2. Add frontera computing environment in machine_postprocess.xml
-# 3. Add batch_frontera.tmpl
-# 4. Use a new git repository for ILAMB in Externals.cfg
-# 5. Comment the ligpng16, reinstallation of hp5y, netCDF4 in create_python_env.
-# After replacing these files, the installation should work on Frontera.
+## CESM_postprocessing tool installation on Frontera at TACC.
+ 1. Add frontera_modules
+ 2. Add frontera computing environment in machine_postprocess.xml
+ 3. Add batch_frontera.tmpl
+ 4. Use a new git repository for ILAMB in Externals.cfg
+ 5. Comment the ligpng16, reinstallation of hp5y, netCDF4 in create_python_env.
+ After replacing these files, the installation should work on Frontera.
 
 # CESM_postprocessing on Ada
 
